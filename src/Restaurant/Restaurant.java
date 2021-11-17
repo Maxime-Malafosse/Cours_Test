@@ -3,14 +3,16 @@ package Restaurant;
 import java.util.ArrayList;
 
 public class Restaurant {
-    ArrayList<Serveur> ListServeurs;
+    String name;
+    ArrayList<Serveur> listServeurs;
 
     public Restaurant(ArrayList<Serveur> serveurs) {
-        ListServeurs = serveurs;
+        listServeurs = serveurs;
+         name = "oo";
     }
     public double chiffreAffaires(){
         double sum = 0;
-        for(Serveur s: ListServeurs){
+        for(Serveur s: listServeurs){
             sum += s.getChiffreAffaires();
         }
         return sum;
