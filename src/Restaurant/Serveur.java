@@ -1,9 +1,11 @@
 package Restaurant;
 
 public class Serveur {
+    String name;
     double ChiffreAffaires;
 
-    public Serveur() {
+    public Serveur(String name) {
+        this.name = name;
         ChiffreAffaires = 0;
     }
 
