@@ -17,4 +17,7 @@ public class Franchise {
         return sum;
     }
 
+    public ArrayList<Restaurant> getListRestau() {
+        return ListRestau;
+    }
 }

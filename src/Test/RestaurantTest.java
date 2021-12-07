@@ -1,4 +1,5 @@
 package Test;
+import Utilities.FranchiseBuilder;
 import Utilities.RestaurantBuilder;
 import org.junit.BeforeClass;
 import org.junit.Test;
@@ -43,7 +44,7 @@ public class RestaurantTest {
     public void Restaurant(){
 
         //Etant donné un restaurant avec 2 serveurs
-        Restaurant r = new RestaurantBuilder().AyantXServeurs(2).build();
+        Restaurant r = new RestaurantBuilder().ayantXServeurs(2).build();
 
 
         //Quand chacun prend une commande
@@ -57,25 +58,17 @@ public class RestaurantTest {
 
     @Test
     public void Franchise(){
-        Restaurant r = new RestaurantBuilder().AyantXServeurs(3).build();
-
-        Restaurant r2 = new RestaurantBuilder().AyantXServeurs(3).build();
-
-        ArrayList<Restaurant> listRestau = new ArrayList<>();
-        listRestau.add(r);
-        listRestau.add(r2);
-        Franchise f =  new Franchise(listRestau);
-
+        Franchise f =  new FranchiseBuilder().ayantXRestaurantXServeur(2,3).build();
 
 
         //Quand chacun prend une commande
         double montantCommande = 67.8;
-        for(Serveur s : r.getListServeurs()){
+        for(Serveur s : f.getListRestau().get(0).getListServeurs()){
             s.prendreCommande(montantCommande);
         }
 
         double montantCommande2 = 68.8;
-        for(Serveur s : r2.getListServeurs()){
+        for(Serveur s : f.getListRestau().get(1).getListServeurs()){
             s.prendreCommande(montantCommande2);
         }
 
@@ -84,14 +77,14 @@ public class RestaurantTest {
     }
     @Test
     public void AvantService_Initial(){
-        Restaurant r = new RestaurantBuilder().AyantXServeurs(3).build();
+        Restaurant r = new RestaurantBuilder().ayantXServeurs(3).build();
 
         assertEquals(r.getListTable().size(),0);
     }
 
     @Test
     public void Ajout_table(){
-        Restaurant r = new RestaurantBuilder().AyantXServeurs(3).build();
+        Restaurant r = new RestaurantBuilder().ayantXServeurs(3).build();
         ArrayList<Table> listTable = new ArrayList<Table>();
         listTable.add(new Table(1,r.getListServeurs().get(0)));
         listTable.add(new Table(2,r.getListServeurs().get(1)));
@@ -101,7 +94,7 @@ public class RestaurantTest {
     }
 
     @Test
-    public void Ajout_table_plus_grand_que_restaurant(){
+    public void Ajout_tableList_plus_grand_que_restaurant(){
         ArrayList<Serveur> listServeur= new ArrayList<>();
         listServeur.add(new Serveur());
         listServeur.add(new Serveur());
@@ -113,11 +106,36 @@ public class RestaurantTest {
         listTable.add(new Table(2,listServeur.get(1)));
         listTable.add(new Table(3,listServeur.get(2)));
         listTable.add(new Table(4,listServeur.get(3)));
-        Restaurant r = new Restaurant(listServeur,maitreHotel,3);
+        Restaurant r = new RestaurantBuilder().ayantXServeurs(3).build();
         r.ajoutTable(listTable);
 
         assertEquals(r.getListTable().size(),0);
     }
+
+    @Test
+    public void Ajout_table_plus_grand_que_restaurant(){
+        ArrayList<Serveur> listServeur= new ArrayList<>();
+        listServeur.add(new Serveur());
+        listServeur.add(new Serveur());
+        listServeur.add(new Serveur());
+        listServeur.add(new Serveur());
+
+        ArrayList<Table> listTable = new ArrayList<Table>();
+        listTable.add(new Table(1,listServeur.get(0)));
+        listTable.add(new Table(2,listServeur.get(1)));
+        listTable.add(new Table(3,listServeur.get(2)));
+        listTable.add(new Table(4,listServeur.get(3)));
+
+        Restaurant r = new RestaurantBuilder().ayantXServeurs(3).build();
+
+        r.ajoutTable(listTable.get(0));
+        r.ajoutTable(listTable.get(1));
+        r.ajoutTable(listTable.get(2));
+        r.ajoutTable(listTable.get(3));
+
+        assertEquals(r.getListTable().size(),3);
+    }
+
     @Test
     public void Service_Initial(){
         ArrayList<Serveur> listServeur= new ArrayList<>();

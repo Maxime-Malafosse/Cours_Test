@@ -33,7 +33,7 @@ public class Restaurant {
     }
 
     public void ajoutTable(Table t){
-        if(listTable.size() <= table){
+        if(listTable.size() != table){
             listTable.add(t);
         }
         else{
