@@ -1,0 +1,93 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <parent>
+    <groupId>org.jbehave</groupId>
+    <artifactId>jbehave</artifactId>
+    <version>4.9-SNAPSHOT</version>
+  </parent>
+  <artifactId>jbehave-examples</artifactId>
+  <packaging>pom</packaging>
+  <name>JBehave Examples</name>
+
+  <properties>
+    <jbehave.version>${project.version}</jbehave.version>
+    <jbehave.site.version>3.4</jbehave.site.version>
+  </properties>
+
+  <modules>
+    <module>core</module>
+    <module>failing</module>
+    <module>ant</module>
+    <module>annotations</module>
+    <module>executable-jar</module>
+    <module>gameoflife</module>
+    <module>gherkin</module>
+    <module>groovy</module>
+    <module>jruby</module>
+    <module>scala</module>
+    <module>performance</module>
+    <module>threads</module>
+    <module>urls</module>
+    <module>maps</module>
+    <module>meta</module>
+    <module>stepdocs</module>
+    <module>testng</module>
+    <module>i18n</module>
+    <module>guice</module>
+    <module>needle</module>
+    <module>pico</module>
+    <module>spring</module>
+    <module>spring-security</module>
+    <module>weld</module>
+  </modules>
+
+  <dependencies>
+    <dependency>
+      <groupId>org.jbehave</groupId>
+      <artifactId>jbehave-core</artifactId>
+      <version>${jbehave.version}</version>
+    </dependency>
+    <dependency>
+      <groupId>org.jbehave</groupId>
+      <artifactId>jbehave-core</artifactId>
+      <version>${jbehave.version}</version>
+      <classifier>resources</classifier>
+      <type>zip</type>
+      <scope>test</scope>
+    </dependency>
+    <dependency>
+      <groupId>org.jbehave.site</groupId>
+      <artifactId>jbehave-site-resources</artifactId>
+      <version>${jbehave.site.version}</version>
+      <type>zip</type>
+      <scope>test</scope>
+    </dependency>
+  </dependencies>
+
+  <build>
+    <pluginManagement>
+      <plugins>
+        <plugin>
+          <groupId>org.jbehave</groupId>
+          <artifactId>jbehave-maven-plugin</artifactId>
+          <version>${jbehave.version}</version>
+        </plugin>
+      </plugins>
+    </pluginManagement>
+  </build>
+  <profiles>
+    <profile>
+      <id>gui</id>
+      <modules>
+        <module>noughtsandcrosses</module>
+      </modules>
+    </profile>
+    <profile>
+      <id>rest</id>
+      <modules>
+        <module>rest</module>
+      </modules>
+    </profile>
+  </profiles>
+</project>

@@ -1,0 +1,106 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+<head>
+<title>Using REST</title>
+</head>
+
+<body>
+
+<h2>Using REST to access remote resources</h2>
+
+<p>REST is a commonly-used protocol to provide access to remote resources.</p>
+
+<p>JBehave supports accessing resources via REST using the <b>jbehave-rest</b> module.</p>
+
+<p>REST is typically used to access wikis.  Each REST provider has its own API.</p>
+
+<h3>Using provider-specific components</h3>
+
+<p>JBehave allows provider-specific implementation of the following interface:</p>
+<ul>
+<li><a href="javadoc/rest/org/jbehave/core/io/rest/ResourceIndexer.html">ResourceIndexer</a>:  indexes resources</li>
+<li><a href="javadoc/core/org/jbehave/core/io/ResourceLoader.html">ResourceLoader</a>:  loads resources from provider</li>
+<li><a href="javadoc/rest/org/jbehave/core/io/rest/ResourceUploader.html">ResourceUploader</a>:  uploads resources to provider</li>
+</ul>
+</p>
+<p>Currently supported as REST providers are <a href="http://redmine.org">Redmine</a> and <a href="http://xwiki.org">XWiki</a>.  
+Also supported for resource indexing and loading (but not for uploading) is <a href="https://www.atlassian.com/software/confluence">Confluence</a>.</p>
+
+<p>JBehave allows provider-agnostic components for importing/export from/to providers:</p>
+<ul>
+<li><a href="javadoc/rest/org/jbehave/core/io/rest/ResourceImporter.html">ResourceImporter</a>:  imports resources from provider</li>
+<li><a href="javadoc/rest/org/jbehave/core/io/rest/ResourceExporter.html">ResourceExporter</a>:  exports resources to provider</li>
+</ul>
+
+<p>Currently supported are filesystem-based import/export implementations:</p>
+<ul>
+<li><a href="javadoc/rest/org/jbehave/core/io/rest/filesystem/ImportToFilesystem.html">ImportToFilesystem</a>:  imports resources to filesystem</li>
+<li><a href="javadoc/rest/org/jbehave/core/io/rest/filesystem/ExportFromFilesystem.html">ExportFromFilesystem</a>:  exports resources from filesystem</li>
+</ul>
+
+<p> Typically, importer/exporter implementations will be injected with provider-specific implementations of resource indexer, loader and uploader.</p>
+
+<h3>Using Maven goals</h3>
+
+<p>The import/export filesystem functionality is also exposed via Maven goals:</p>
+
+<script type="syntaxhighlighter" class="brush: xml">
+<![CDATA[
+    <plugin>
+        <groupId>org.jbehave</groupId>
+        <artifactId>jbehave-rest</artifactId>
+        <version>[version]</version>
+        <executions>
+            <execution>
+                <id>import-to-filesystem</id>
+                <phase>process-resources</phase>
+                <configuration>
+					<restProvider>xwiki</restProvider>
+                    <restRootURI>http://localhost:8080/xwiki/rest/wikis/xwiki/spaces/Main/pages</restRootURI>
+                    <restUsername>[optional]</restUsername>
+                    <restPassword>[optional]</restPassword>
+                    <resourcesPath>[optional|src/main/resources/stories]</resourcesPath>
+                    <resourcesExt>[optional|.story]</resourcesExt>
+                </configuration>
+                <goals>
+                    <goal>import-to-filesystem</goal>
+                </goals>
+            </execution>
+            <execution>
+                <id>export-from-filesystem</id>
+                <phase>process-resources</phase>
+                <configuration>
+					<restProvider>xwiki</restProvider>
+                    <restRootURI>http://localhost:8080/xwiki/rest/wikis/xwiki/spaces/Main/pages</restRootURI>
+                    <restUsername>[optional]</restUsername>
+                    <restPassword>[optional]</restPassword>
+                    <resourcesPath>[optional|src/main/resources/stories]</resourcesPath>
+                    <resourcesExt>[optional|.story]</resourcesExt>
+                    <resourcesIncludes>[optional|**]</resourcesIncludes>
+                </configuration>
+                <goals>
+                    <goal>export-from-filesystem</goal>
+                </goals>
+            </execution>
+        </executions>
+    </plugin>
+]]>
+</script>
+
+<p>In command-line, without the need to configure the plugin in a pom.xml:</p>
+
+<script type="syntaxhighlighter" class="brush: plain">
+<![CDATA[
+mvn org.jbehave:jbehave-rest:import-to-filesystem   -Djbehave.rest.rootURI=http://localhost:8080/xwiki/rest/wikis/xwiki/spaces/Main/pages 
+                                                    -Djbehave.rest.resourcesPath=src/main/resources/stories -Djbehave.rest.resourcesExt=.story 
+mvn org.jbehave:jbehave-rest:export-from-filesystem -Djbehave.restRootURI=http://localhost:8080/xwiki/rest/wikis/xwiki/spaces/Main/pages 
+                                                    -Djbehave.rest.resourcesPath=src/main/resources/stories -Djbehave.rest.resourcesExt=.story 
+													-Djbehave.rest.resourcesIncludes=**/*.story
+]]>
+</script>
+
+<div class="clear">
+<hr />
+</div>
+</body>
+</html>

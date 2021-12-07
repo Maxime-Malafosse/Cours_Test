@@ -1,0 +1,81 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+<head>
+<title>Download</title>
+</head>
+
+<body>
+
+<h2>Stable releases</h2>
+
+<p>Stable releases can be found on the <a
+  href="https://oss.sonatype.org/content/repositories/releases/org/jbehave/">Nexus Repository Manager</a> (which is synched with the <a
+  href="http://search.maven.org/#search|ga|1|jbehave">Central Maven Repository</a>).</p>
+
+<h2 id="snapshot">Latest Snapshots</h2>
+
+<p>The snapshot builds of JBehave can be found on the <a
+  href="https://oss.sonatype.org/content/repositories/snapshots/org/jbehave/">Nexus Repository Manager</a>. Be sure to choose the snapshot with the latest
+version and the filename with the latest timestamp.</p>
+
+<h2 id="maven">Maven Configuration</h2>
+
+<p>Released artifacts synched to Central Maven Repository are accessible via Maven without any additional configuration if you have direct access to the internet.  
+If you are using a Repository Manager, such as Nexus, then consult the administrator for the Maven client configuration.  
+</p>
+
+<p>Released artifacts not yet synched to Central (usually synch occurs every hour or two) and snapshots are accessible by activating the following Maven profile:</p>
+
+<script type="syntaxhighlighter" class="brush: xml">
+<![CDATA[
+  <profiles>
+    <profile>
+      <!-- Required for dependencies of JBehave snapshots -->
+      <id>sonatype</id>
+      <activation>
+        <activeByDefault>false</activeByDefault>
+      </activation>
+      <repositories>
+        <repository>
+          <id>sonatype-public-repository-group</id>
+          <name>Sonatype Public Repository Group</name>
+          <url>https://oss.sonatype.org/content/groups/public/</url>
+          <layout>default</layout>
+          <releases>
+            <enabled>true</enabled>
+            <updatePolicy>never</updatePolicy>
+          </releases>
+          <snapshots>
+            <enabled>true</enabled>
+            <updatePolicy>never</updatePolicy>
+          </snapshots>
+        </repository>
+      </repositories>
+      <pluginRepositories>
+        <pluginRepository>
+          <id>sonatype-public-repository-group</id>
+          <name>Sonatype Public Repository Group</name>
+          <url>https://oss.sonatype.org/content/groups/public/</url>
+          <releases>
+            <enabled>true</enabled>
+          </releases>
+          <snapshots>
+            <enabled>true</enabled>
+          </snapshots>
+        </pluginRepository>
+      </pluginRepositories>
+    </profile>
+  </profiles>
+]]>
+</script>
+
+<h2 id="dependencies">JBehave modules and dependencies</h2>
+
+<p>JBehave's distribution is modularised and each modules has different <a href="dependencies.html">dependencies</a>.</p>
+
+<div class="clear">
+<hr />
+</div>
+
+</body>
+</html>
