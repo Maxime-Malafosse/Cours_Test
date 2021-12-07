@@ -16,6 +16,10 @@ public class Restaurant {
         table = nombreTable;
     }
 
+    public ArrayList<Serveur> getListServeurs() {
+        return listServeurs;
+    }
+
     public Serveur getMaitreHotel() {
         return MaitreHotel;
     }
@@ -26,6 +30,24 @@ public class Restaurant {
 
     public int getTable() {
         return table;
+    }
+
+    public void ajoutTable(Table t){
+        if(listTable.size() <= table){
+            listTable.add(t);
+        }
+        else{
+            System.out.println("La table n'est pas ajoutée car ce restaurant a déjà dépassé la limite");
+        }
+    }
+
+    public void ajoutTable(ArrayList<Table> t){
+        if(t.size() <= table){
+            listTable = new ArrayList<Table>(t);
+        }
+        else{
+            System.out.println("La table n'est pas ajoutée car ce restaurant a déjà dépassé la limite");
+        }
     }
 
     public double chiffreAffaires(){

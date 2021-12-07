@@ -1,4 +1,6 @@
 package Test;
+import Utilities.RestaurantBuilder;
+import org.junit.BeforeClass;
 import org.junit.Test;
 import Restaurant.*;
 
@@ -7,9 +9,10 @@ import java.util.ArrayList;
 import static org.junit.Assert.assertEquals;
 
 public class RestaurantTest {
+
     @Test
     public void Serveur_initial(){
-        Serveur s = new Serveur("oui");
+        Serveur s = new Serveur();
         double chiffreAffaire = s.getChiffreAffaires();
 
         assertEquals(0,chiffreAffaire,0);
@@ -18,7 +21,7 @@ public class RestaurantTest {
     @Test
     public void Serveur_increment(){
         double montantCommande = 64.5;
-        Serveur s = new Serveur("oui");
+        Serveur s = new Serveur();
         s.prendreCommande(montantCommande);
         assertEquals(montantCommande,s.getChiffreAffaires(),0);
     }
@@ -26,7 +29,7 @@ public class RestaurantTest {
     @Test
     public void Serveur_2_commandes(){
 
-      Serveur s = new Serveur("oui");
+      Serveur s = new Serveur();
       double montantPremiereCommande = 67.8;
       s.prendreCommande(montantPremiereCommande);
 
@@ -40,15 +43,12 @@ public class RestaurantTest {
     public void Restaurant(){
 
         //Etant donné un restaurant avec 2 serveurs
-        ArrayList<Serveur> listServeur= new ArrayList<>();
-        listServeur.add(new Serveur("oui"));
-        listServeur.add(new Serveur("non"));
-        Serveur maitreHotel = new Serveur("ouinon");
-        Restaurant r = new Restaurant(listServeur,maitreHotel,3);
+        Restaurant r = new RestaurantBuilder().AyantXServeurs(2).build();
+
 
         //Quand chacun prend une commande
         double montantCommande = 67.8;
-        for(Serveur s : listServeur){
+        for(Serveur s : r.getListServeurs()){
             s.prendreCommande(montantCommande);
         }
 
@@ -57,17 +57,9 @@ public class RestaurantTest {
 
     @Test
     public void Franchise(){
-        ArrayList<Serveur> listServeur= new ArrayList<>();
-        listServeur.add(new Serveur("oui"));
-        listServeur.add(new Serveur("non"));
-        Serveur maitreHotel = new Serveur("ouinon");
-        Restaurant r = new Restaurant(listServeur,maitreHotel,5);
+        Restaurant r = new RestaurantBuilder().AyantXServeurs(3).build();
 
-        ArrayList<Serveur> listServeur2= new ArrayList<>();
-        listServeur2.add(new Serveur("aaa"));
-        listServeur2.add(new Serveur("bbb"));
-        Serveur maitreHotel2 = new Serveur("aaabbb");
-        Restaurant r2 = new Restaurant(listServeur2,maitreHotel2,5);
+        Restaurant r2 = new RestaurantBuilder().AyantXServeurs(3).build();
 
         ArrayList<Restaurant> listRestau = new ArrayList<>();
         listRestau.add(r);
@@ -78,34 +70,60 @@ public class RestaurantTest {
 
         //Quand chacun prend une commande
         double montantCommande = 67.8;
-        for(Serveur s : listServeur){
+        for(Serveur s : r.getListServeurs()){
             s.prendreCommande(montantCommande);
         }
 
         double montantCommande2 = 68.8;
-        for(Serveur s : listServeur2){
+        for(Serveur s : r2.getListServeurs()){
             s.prendreCommande(montantCommande2);
         }
 
-        assertEquals(montantCommande *2 + montantCommande2 * 2, f.chiffreAffaires(),0);
+        assertEquals(montantCommande *3 + montantCommande2 * 3, f.chiffreAffaires(),0);
 
     }
     @Test
     public void AvantService_Initial(){
+        Restaurant r = new RestaurantBuilder().AyantXServeurs(3).build();
+
+        assertEquals(r.getListTable().size(),0);
+    }
+
+    @Test
+    public void Ajout_table(){
+        Restaurant r = new RestaurantBuilder().AyantXServeurs(3).build();
+        ArrayList<Table> listTable = new ArrayList<Table>();
+        listTable.add(new Table(1,r.getListServeurs().get(0)));
+        listTable.add(new Table(2,r.getListServeurs().get(1)));
+        r.ajoutTable(listTable);
+
+        assertEquals(r.getListTable().size(),2);
+    }
+
+    @Test
+    public void Ajout_table_plus_grand_que_restaurant(){
         ArrayList<Serveur> listServeur= new ArrayList<>();
-        listServeur.add(new Serveur("oui"));
-        listServeur.add(new Serveur("non"));
-        Serveur maitreHotel = new Serveur("ouinon");
+        listServeur.add(new Serveur());
+        listServeur.add(new Serveur());
+        listServeur.add(new Serveur());
+        listServeur.add(new Serveur());
+        Serveur maitreHotel = new Serveur();
+        ArrayList<Table> listTable = new ArrayList<Table>();
+        listTable.add(new Table(1,listServeur.get(0)));
+        listTable.add(new Table(2,listServeur.get(1)));
+        listTable.add(new Table(3,listServeur.get(2)));
+        listTable.add(new Table(4,listServeur.get(3)));
         Restaurant r = new Restaurant(listServeur,maitreHotel,3);
+        r.ajoutTable(listTable);
 
         assertEquals(r.getListTable().size(),0);
     }
     @Test
     public void Service_Initial(){
         ArrayList<Serveur> listServeur= new ArrayList<>();
-        listServeur.add(new Serveur("oui"));
-        listServeur.add(new Serveur("non"));
-        Serveur maitreHotel = new Serveur("ouinon");
+        listServeur.add(new Serveur());
+        listServeur.add(new Serveur());
+        Serveur maitreHotel = new Serveur();
         Restaurant r = new Restaurant(listServeur,maitreHotel,3);
         Service s = new Service(r);
         s.debutService();
