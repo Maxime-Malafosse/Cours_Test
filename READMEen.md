@@ -1,5 +1,6 @@
 # Cours_Test
-Bienvenue sur le cours de testhen !
-Il est 12.0hen et nous avons développé en équipe le projet du professoralhen en java.
+Welcome in the TDD class in which we will do Test driven developement !
 
-Nous allons devoir désormais utiliserhen plus ou moins 4 framework différents pour effectuer des tests.
+It's 1 am and we have to use at least 4 different testinghen framework to develop in.
+
+We've already developped the main program in java to allow us to focus on the testhen.
