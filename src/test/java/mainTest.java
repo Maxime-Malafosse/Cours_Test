@@ -1,5 +1,3 @@
-package Test;
-
 import AppTest.*;
 import org.junit.Test;
 
