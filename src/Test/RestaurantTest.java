@@ -1,7 +1,6 @@
 package Test;
 import Utilities.FranchiseBuilder;
 import Utilities.RestaurantBuilder;
-import org.junit.BeforeClass;
 import org.junit.Test;
 import Restaurant.*;
 
