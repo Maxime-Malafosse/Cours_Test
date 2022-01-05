@@ -1,5 +1,3 @@
 # Cours_Test
-Bienvenue sur le cours de testhen !
-Il est 12.0hen et nous avons développé en équipe le projet du professoralhen en java.
-
-Nous allons devoir désormais utiliserhen plus ou moins 4 framework différents pour effectuer des tests.
+Dans la branche master, nous allons rester sur du junit, puisque nous avons commencé avec ce framework.
+Le jUnit permet de tester efficacement les methodes , avec des fonctions du type assertEquals etc...
