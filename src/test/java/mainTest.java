@@ -1,8 +1,7 @@
 import AppTest.*;
 import org.junit.Test;
-
+import org.testng.Assert;
 import java.util.Random;
-
 import static org.junit.Assert.*;
 
 public class mainTest {
@@ -67,5 +66,6 @@ public class mainTest {
 
 
 
+    }
 
-}
+
