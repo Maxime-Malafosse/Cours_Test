@@ -1,3 +1,5 @@
+package starter;
+
 import Utilities.FranchiseBuilder;
 import Utilities.RestaurantBuilder;
 import org.junit.Test;
@@ -28,14 +30,14 @@ public class RestaurantTest {
     @Test
     public void Serveur_2_commandes(){
 
-      Serveur s = new Serveur();
-      double montantPremiereCommande = 67.8;
-      s.prendreCommande(montantPremiereCommande);
+        Serveur s = new Serveur();
+        double montantPremiereCommande = 67.8;
+        s.prendreCommande(montantPremiereCommande);
 
-      double montantSecondeCommande = 178;
-      s.prendreCommande(montantSecondeCommande);
+        double montantSecondeCommande = 178;
+        s.prendreCommande(montantSecondeCommande);
 
-      assertEquals(montantPremiereCommande + montantSecondeCommande,s.getChiffreAffaires(),0);
+        assertEquals(montantPremiereCommande + montantSecondeCommande,s.getChiffreAffaires(),0);
 
     }
     @Test
