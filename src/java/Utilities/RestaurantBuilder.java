@@ -16,6 +16,13 @@ public class RestaurantBuilder {
         }
         return this;
     }
+    public RestaurantBuilder ayantXServeursdeXCommandesPourUnMontantDeX(int nombreServeurs, int commandes, int montant){
+        ArrayList<Serveur> s = new ArrayList<Serveur>();
+        for (int i = 0; i < nombreServeurs ; i++) {
+            listServeur.add(new ServeurBuilder().AyantXCommandeAyantXBoissonAyantXprix(commandes, 1, montant).build());
+        }
+        return this;
+    }
 
     public Restaurant build(){
         return new Restaurant(listServeur,listServeur.size());

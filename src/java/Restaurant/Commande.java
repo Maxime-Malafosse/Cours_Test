@@ -29,6 +29,4 @@ public class Commande {
         }
         return montant;
     }
-
-
 }

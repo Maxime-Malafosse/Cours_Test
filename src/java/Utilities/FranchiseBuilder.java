@@ -16,6 +16,13 @@ public class FranchiseBuilder {
         }
         return this;
     }
+    public FranchiseBuilder ayantXRestaurantXServeurAvecXCommandesAvecUnMontantDeX(int restaurant,int serveur, int commandes, int montant){
+        for (int i = 0; i < restaurant ; i++) {
+            Restaurant r = new RestaurantBuilder().ayantXServeursdeXCommandesPourUnMontantDeX(serveur, commandes, montant).build();
+            listRestaurant.add(r);
+        }
+        return this;
+    }
 
     public FranchiseBuilder ayantXRestaurantList(ArrayList<Restaurant> r){
         listRestaurant = r  ;
