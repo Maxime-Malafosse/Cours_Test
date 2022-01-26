@@ -13,8 +13,5 @@ public class Service {
 
     public void debutService(){
 
-        for (int i = r.getListTable().size(); i < r.getTable(); i++) {
-            r.getListTable().add(new Table(i,r.getMaitreHotel()));
-        }
     }
 }

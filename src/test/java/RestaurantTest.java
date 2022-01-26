@@ -134,18 +134,4 @@ public class RestaurantTest {
         assertEquals(r.getListTable().size(),3);
     }
 
-    @Test
-    public void Service_Initial(){
-        ArrayList<Serveur> listServeur= new ArrayList<>();
-        listServeur.add(new Serveur());
-        listServeur.add(new Serveur());
-        Serveur maitreHotel = new Serveur();
-        Restaurant r = new Restaurant(listServeur,maitreHotel,3);
-        Service s = new Service(r);
-        s.debutService();
-
-        for(Table t: r.getListTable()){
-            assertEquals(t.getAffectation(),r.getMaitreHotel());
-        }
-    }
 }

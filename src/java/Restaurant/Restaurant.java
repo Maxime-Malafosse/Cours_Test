@@ -4,24 +4,18 @@ import java.util.ArrayList;
 
 public class Restaurant {
     ArrayList<Serveur> listServeurs;
-    Serveur MaitreHotel;
     ArrayList<Table> listTable;
 
     int table;
 
-    public Restaurant(ArrayList<Serveur> serveurs,Serveur maitreHotel ,int nombreTable) {
+    public Restaurant(ArrayList<Serveur> serveurs,int nombreTable) {
         listServeurs = serveurs;
-        MaitreHotel = maitreHotel;
         listTable = new ArrayList<Table>();
         table = nombreTable;
     }
 
     public ArrayList<Serveur> getListServeurs() {
         return listServeurs;
-    }
-
-    public Serveur getMaitreHotel() {
-        return MaitreHotel;
     }
 
     public ArrayList<Table> getListTable() {
