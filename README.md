@@ -1,5 +1,8 @@
 # Cours_Test
-Dans la branche master, nous allons rester sur du junit, puisque nous avons commencé avec ce framework.
-Le jUnit permet de tester efficacement les methodes , avec des fonctions du type assertEquals etc...
+Bienvenue sur le cours de test !
 
-Ce framework est efficace car on crée un fichier où l'on écrit tous les tests qui correspondent et on peut directement les éxécuter. C'est efficace et simple d'utilisation.
+Dans cette branche, nous avons tester avec Selenium.
+
+Selenium est un framework utilisé pour automatiser les tests fonctionnels  des applications Web. Selenium peut supporter de nombreux languages afin de tourner les tests UI.
+
+Ce framework est très intéressant, mais le problème est que ce n'est pas le type de framework recherché. Même si Selenium peut intégrer d'autre framework de test comme Junit pour Java, l'interêt de faire des tests UI n'est pas nécessaire pour notre cas.
