@@ -18,7 +18,7 @@ public class FranchiseBuilder {
     }
 
     public FranchiseBuilder ayantXRestaurantList(ArrayList<Restaurant> r){
-        listRestaurant = r;
+        listRestaurant = r  ;
         return this;
     }
 
