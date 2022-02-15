@@ -1,7 +1,7 @@
 package Restaurant;
 
 public class Service {
-    Restaurant r;
+    private Restaurant r;
 
     public Service(Restaurant r) {
         this.r = r;

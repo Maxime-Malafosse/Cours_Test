@@ -3,7 +3,7 @@ package Restaurant;
 import java.util.ArrayList;
 
 public class Franchise {
-    ArrayList<Restaurant> ListRestau;
+    private ArrayList<Restaurant> ListRestau;
 
     public Franchise(ArrayList<Restaurant> listRestau) {
         this.ListRestau = listRestau;

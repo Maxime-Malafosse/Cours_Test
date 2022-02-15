@@ -1,7 +1,5 @@
 import Restaurant.Serveur;
 import Utilities.CommandeBuilder;
-import Utilities.FranchiseBuilder;
-import Utilities.RestaurantBuilder;
 import Utilities.ServeurBuilder;
 import org.junit.Test;
 import static org.junit.Assert.assertEquals;

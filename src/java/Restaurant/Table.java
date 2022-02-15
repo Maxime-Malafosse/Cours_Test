@@ -1,8 +1,8 @@
 package Restaurant;
 
 public class Table {
-    int id;
-    Serveur affectation;
+    private int id;
+    private Serveur affectation;
 
     public Table(int id, Serveur affectation) {
         this.id = id;

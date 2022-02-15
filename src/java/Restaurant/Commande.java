@@ -3,8 +3,8 @@ package Restaurant;
 import java.util.ArrayList;
 
 public class Commande {
-    ArrayList<Nourriture> ListNourriture;
-    ArrayList<Boisson> ListBoissons;
+    private ArrayList<Nourriture> ListNourriture;
+    private ArrayList<Boisson> ListBoissons;
 
     public Commande() {
         ListNourriture = new ArrayList<>();
@@ -18,6 +18,14 @@ public class Commande {
    public void addBoisson(Boisson b){
         ListBoissons.add(b);
    }
+
+    public ArrayList<Nourriture> getListNourriture() {
+        return ListNourriture;
+    }
+
+    public ArrayList<Boisson> getListBoissons() {
+        return ListBoissons;
+    }
 
     public int getPrixCommande(){
         int montant = 0;
