@@ -7,6 +7,7 @@ import java.util.ArrayList;
 public class RestaurantBuilder {
 
     private ArrayList<Serveur> listServeur= new ArrayList<>();
+    private int nbrTable = 0;
     public static Restaurant Stub = new RestaurantBuilder().build();
 
     public RestaurantBuilder ayantXServeurs(int nombreServeurs){
@@ -16,6 +17,18 @@ public class RestaurantBuilder {
         }
         return this;
     }
+
+    public RestaurantBuilder ayantXServeursXTable(int nombreServeurs,int nombreTable){
+        ArrayList<Serveur> s = new ArrayList<Serveur>();
+        for (int i = 0; i < nombreServeurs ; i++) {
+            listServeur.add(new ServeurBuilder().build());
+        }
+        nbrTable = nombreTable;
+        return this;
+    }
+
+
+
     public RestaurantBuilder ayantXServeursdeXCommandesPourUnMontantDeX(int nombreServeurs, int commandes, int montant){
         ArrayList<Serveur> s = new ArrayList<Serveur>();
         for (int i = 0; i < nombreServeurs ; i++) {
@@ -25,6 +38,6 @@ public class RestaurantBuilder {
     }
 
     public Restaurant build(){
-        return new Restaurant(listServeur,listServeur.size());
+        return new Restaurant(listServeur,nbrTable);
     }
 }

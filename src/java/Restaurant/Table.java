@@ -1,17 +1,16 @@
 package Restaurant;
 
 public class Table {
-    private int id;
     private Serveur affectation;
 
-    public Table(int id, Serveur affectation) {
-        this.id = id;
+    public Table( Serveur affectation) {
         this.affectation = affectation;
     }
 
-    public int getId() {
-        return id;
+    public Table() {
+        this.affectation = null;
     }
+
 
     public void setAffectation(Serveur affectation) {
         this.affectation = affectation;

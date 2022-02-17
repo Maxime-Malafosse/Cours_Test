@@ -84,8 +84,8 @@ public class RestaurantTest {
     public void Ajout_table(){
         Restaurant r = new RestaurantBuilder().ayantXServeurs(3).build();
         ArrayList<Table> listTable = new ArrayList<Table>();
-        listTable.add(new Table(1,r.getListServeurs().get(0)));
-        listTable.add(new Table(2,r.getListServeurs().get(1)));
+        listTable.add(new Table(r.getListServeurs().get(0)));
+        listTable.add(new Table(r.getListServeurs().get(1)));
         r.ajoutTable(listTable);
 
         assertEquals(r.getListTable().size(),2);
@@ -100,10 +100,10 @@ public class RestaurantTest {
         listServeur.add(new Serveur());
         Serveur maitreHotel = new Serveur();
         ArrayList<Table> listTable = new ArrayList<Table>();
-        listTable.add(new Table(1,listServeur.get(0)));
-        listTable.add(new Table(2,listServeur.get(1)));
-        listTable.add(new Table(3,listServeur.get(2)));
-        listTable.add(new Table(4,listServeur.get(3)));
+        listTable.add(new Table(listServeur.get(0)));
+        listTable.add(new Table(listServeur.get(1)));
+        listTable.add(new Table(listServeur.get(2)));
+        listTable.add(new Table(listServeur.get(3)));
         Restaurant r = new RestaurantBuilder().ayantXServeurs(3).build();
         r.ajoutTable(listTable);
 
@@ -119,10 +119,10 @@ public class RestaurantTest {
         listServeur.add(new Serveur());
 
         ArrayList<Table> listTable = new ArrayList<Table>();
-        listTable.add(new Table(1,listServeur.get(0)));
-        listTable.add(new Table(2,listServeur.get(1)));
-        listTable.add(new Table(3,listServeur.get(2)));
-        listTable.add(new Table(4,listServeur.get(3)));
+        listTable.add(new Table(listServeur.get(0)));
+        listTable.add(new Table(listServeur.get(1)));
+        listTable.add(new Table(listServeur.get(2)));
+        listTable.add(new Table(listServeur.get(3)));
 
         Restaurant r = new RestaurantBuilder().ayantXServeurs(3).build();
 
