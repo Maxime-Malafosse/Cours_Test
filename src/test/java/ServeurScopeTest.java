@@ -11,9 +11,12 @@ public class ServeurScopeTest {
     //ALORS celui-ci est à 0
     @Test
     public void Serveur_Avec_0_Commande() {
+        //ÉTANT DONNÉ un nouveau serveur
         Serveur s = new ServeurBuilder().build();
-
-        assertEquals(0, s.getChiffreAffaires(),0);
+        //QUAND on récupére son chiffre d'affaires
+        double chiffre  = s.getChiffreAffaires();
+        //ALORS celui-ci est à 0
+        assertEquals(0, chiffre,0);
     }
 
     //ÉTANT DONNÉ un nouveau serveur
@@ -21,9 +24,11 @@ public class ServeurScopeTest {
     //ALORS son chiffre d'affaires est le montant de celle-ci
     @Test
     public void Serveur_Avec_1_Commande() {
-        //Etant donné un restaurant avec 1
-        Serveur s = new ServeurBuilder().AyantXCommandeAyantXBoissonAyantXprix(1,2,3).build();
-
+        //ÉTANT DONNÉ un nouveau serveur
+        Serveur s = new ServeurBuilder().build();
+        //QUAND il prend une commande
+        s.PrendreCommande(new CommandeBuilder().AyantXNourritureAvecXPrix(2,3).build());
+        //ALORS son chiffre d'affaires est le montant de celle-ci
         assertEquals(6, s.getChiffreAffaires(),0);
     }
     //ÉTANT DONNÉ un serveur ayant déjà pris une commande
@@ -31,10 +36,11 @@ public class ServeurScopeTest {
     //ALORS son chiffre d'affaires est la somme des deux commandes
     @Test
     public void Serveur_Avec_2_Commandes() {
-        //Etant donné un restaurant avec 1
+        //ÉTANT DONNÉ un serveur ayant déjà pris une commande
         Serveur s = new ServeurBuilder().AyantXCommandeAyantXBoissonAyantXprix(1,2,3).build();
+        //QUAND il prend une nouvelle commande
         s.PrendreCommande(new CommandeBuilder().AyantXNourritureAvecXPrix(3,5).build());
-
+        //ALORS son chiffre d'affaires est la somme des deux commandes
         assertEquals(21, s.getChiffreAffaires(),0);
     }
 

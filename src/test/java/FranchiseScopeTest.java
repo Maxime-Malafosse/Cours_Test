@@ -1,10 +1,7 @@
-import Restaurant.Commande;
 import Restaurant.Franchise;
-import Restaurant.Restaurant;
 import Utilities.FranchiseBuilder;
 import org.junit.Test;
 
-import java.util.ArrayList;
 
 import static org.junit.Assert.assertEquals;
 
@@ -23,7 +20,6 @@ public class FranchiseScopeTest {
     public void Franchise_Avec_0_Restaurant_de_0_Serveur_1_Commande() {
         //Etant donné une franchise ayant 0 restaurants de 0 serveurs
         Franchise franchise =  new FranchiseBuilder().ayantXRestaurantXServeurAvecXCommandesAvecUnMontantDeX(0,0, 1, 1).build();
-
         assertEquals(0, franchise.chiffreAffaires(),0);
     }
     @Test

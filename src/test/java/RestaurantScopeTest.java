@@ -7,14 +7,14 @@ import static org.junit.Assert.assertEquals;
 public class RestaurantScopeTest {
     @Test
     public void Restaurant_Avec_0_Serveur(){
-        //Etant donné un restaurant avec 2 serveurs
+        //Etant donné un restaurant avec 0 serveurs
         Restaurant r = new RestaurantBuilder().build();
         assertEquals(0, r.chiffreAffaires(),0);
     }
 
     @Test
     public void Restaurant_Avec_Un_Serveur(){
-        //Etant donné un restaurant avec 2 serveurs
+        //Etant donné un restaurant avec 1 serveurs
         Restaurant r = new RestaurantBuilder().ayantXServeurs(1).build();
         //Quand chacun prend une commande
         double montantCommande = 1.0;

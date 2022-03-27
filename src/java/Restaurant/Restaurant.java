@@ -48,8 +48,7 @@ public class Restaurant {
 
     public void ajoutTable(Table t){
         if(service = false) {
-
-            if (listTable.size() != table) {
+            if (listTable.size() != table && listServeurs.contains(t.getAffectation())) {
                 listTable.add(t);
             } else {
                 System.out.println("La table n'est pas ajoutée car ce restaurant a déjà dépassé la limite");
@@ -57,15 +56,6 @@ public class Restaurant {
         }
         else{
             System.out.println("Pas de table ajoutée pendant le service");
-        }
-    }
-
-    public void ajoutTable(ArrayList<Table> t){
-        if(t.size() <= table){
-            listTable = new ArrayList<Table>(t);
-        }
-        else{
-            System.out.println("La table n'est pas ajoutée car ce restaurant a déjà dépassé la limite");
         }
     }
 

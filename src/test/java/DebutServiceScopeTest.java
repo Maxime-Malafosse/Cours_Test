@@ -57,6 +57,7 @@ public class DebutServiceScopeTest {
     @Test
     public void Restaurant_avec_3_tables_avec_un_serveur_fin_service(){
         Restaurant r = new RestaurantBuilder().ayantXServeursXTable(2,3).build();
+
         r.setAffectationTable(r.getListTable().get(0),r.getListServeurs().get(0));
         r.debutService();
         r.finService();
