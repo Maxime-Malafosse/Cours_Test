@@ -23,12 +23,32 @@ public class Serveur {
         ChiffreAffaires += c.getPrixCommande();
     }
 
+    public boolean DeclareNonPayee(Commande c){
+        if (listCommandes.contains(c)){
+          c.declareNonPayee();
+          return true;
+        }
+        else {
+            System.out.println("La commande n'existe pas");
+            return false;
+        }
+    }
+
     public ArrayList<Commande> getListCommandes() {
         return listCommandes;
     }
 
     public double getChiffreAffaires() {
         return ChiffreAffaires;
+    }
+
+    public void setJour(int jour,Commande c){
+        if(listCommandes.contains(c)){
+            c.setJours(jour);
+        }
+        else{
+            System.out.println("La commande n'existe pas");
+        }
     }
 
     public void prendreCommande(double montantCommande){
