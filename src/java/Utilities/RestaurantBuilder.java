@@ -26,6 +26,10 @@ public class RestaurantBuilder {
         nbrTable = nombreTable;
         return this;
     }
+    public RestaurantBuilder ayantXTable(int nombreTable){
+        nbrTable = nombreTable;
+        return this;
+    }
 
 
 

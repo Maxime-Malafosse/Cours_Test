@@ -5,6 +5,7 @@ import java.util.ArrayList;
 public class Restaurant {
     private ArrayList<Serveur> listServeurs;
     private ArrayList<Table> listTable;
+    private ArrayList<Table> listTableLibre;
     private ArrayList<Commande> commandeATransmettre;
     private Serveur maitreHotel;
     private int table;
@@ -15,6 +16,7 @@ public class Restaurant {
     public Restaurant(ArrayList<Serveur> serveurs,int nombreTable) {
         listServeurs = serveurs;
         listTable = new ArrayList<Table>();
+        listTableLibre = new ArrayList<Table>();
         commandeATransmettre = new ArrayList<Commande>();
         table = nombreTable;
         maitreHotel = new Serveur();
@@ -30,7 +32,9 @@ public class Restaurant {
             }
         }
         for (int i = 0; i < table ; i++) {
-            listTable.add(new Table());
+            Table t = new Table();
+            listTable.add(t);
+            listTableLibre.add(t);
         }
     }
 
@@ -44,6 +48,14 @@ public class Restaurant {
 
     public ArrayList<Commande> getCommandeATransmettre() {
         return commandeATransmettre;
+    }
+
+    public ArrayList<Table> getListTableLibre() {
+        return listTableLibre;
+    }
+
+    public int getTable() {
+        return table;
     }
 
     public ArrayList<Serveur> getListServeurs() {
@@ -69,6 +81,41 @@ public class Restaurant {
         else{
             System.out.println("Pas de table ajoutée pendant le service");
         }
+    }
+
+    public void affecteClientTable(Client c, Table t){
+        if(service){
+            if(listTableLibre.contains(t)){
+                t.setClient(c);
+                listTableLibre.remove(t);
+            }
+            else{
+                System.out.println("La table n'existe pas ou n'est pas libre");
+            }
+        }
+        else{
+            System.out.println("Le service n'est pas démarré");
+        }
+    }
+
+    public void libereClientTable(Table t){
+        if(service){
+            if(listTable.contains(t)){
+                if(!(t.libereClient())){
+                    System.out.println("La table n'avait pas encore de client");
+                }
+                else{
+                    listTableLibre.add(t);
+                }
+            }
+            else{
+                System.out.println("La table n'existe pas");
+            }
+        }
+        else{
+            System.out.println("Le service n'est pas encore démarré");
+        }
+
     }
 
     public void prendreCommande(Commande c,Serveur s){
