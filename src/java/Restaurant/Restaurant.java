@@ -12,6 +12,8 @@ public class Restaurant {
     private boolean service;
     private Cuisine cuisine;
     private Epinglage epinglage;
+    private Menu menu;
+    private boolean statutFiliale;
 
     public Restaurant(ArrayList<Serveur> serveurs,int nombreTable) {
         listServeurs = serveurs;
@@ -23,6 +25,8 @@ public class Restaurant {
         cuisine = new Cuisine();
         service = false;
         epinglage = new Epinglage();
+        menu = new Menu();
+        statutFiliale = false;
 
         for(Serveur s : listServeurs){
             for(Commande c : s.getListCommandes()){
@@ -68,6 +72,32 @@ public class Restaurant {
 
     public Cuisine getCuisine() {
         return cuisine;
+    }
+
+    public void setStatutFilialeToTrue(){
+        statutFiliale = true;
+    }
+
+    public void setStatutFilialeToFalse(){
+        statutFiliale = false;
+    }
+
+    public boolean isStatutFiliale() {
+        return statutFiliale;
+    }
+
+    public void setMenu(Menu menu) {
+        this.menu = menu;
+    }
+
+    public Menu getMenu() {
+        return menu;
+    }
+    public void ajoutPlat(Plat p){
+        menu.ajoutPlat(p);
+    }
+    public void removePlat(Plat p){
+        menu.removePlat(p);
     }
 
     public void ajoutTable(Table t){
