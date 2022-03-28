@@ -1,0 +1,13 @@
+1. Ce que vous pensez du telle stratégie
+
+On pense que les tests recettes sont une bonne idée pour bien comprendre le code, et bien le tester.
+De plus, si on ajoute les tests système ainsi que les tests unitaires, cela nous donne plus de stabilité pour le code.
+
+
+
+2. Comment vous auriez testé ce code
+
+On pense que c'est mieux, pour nous, de faire le code avant les tests. En effet,
+avec les tests, nous pourrons tester, à la fin d'une fonctionnalité, s'il y a des erreurs de conception
+ou des bugs. Bien sûr, nous pouvons utiliser du defect testing quand nous trouvons un bug nous même pendant
+la conception du code, ce qui permettra de mieux le développer, et de ne pas livrer le code avec un bug mal résolu.

@@ -31,6 +31,20 @@ public class ServeurScopeTest {
         //ALORS son chiffre d'affaires est le montant de celle-ci
         assertEquals(6, s.getChiffreAffaires(),0);
     }
+
+    //RECETTE
+    @Test
+    public void Serveur_Avec_18_Commandes_() {
+        //ÉTANT DONNÉ un nouveau serveur
+        Serveur s = new ServeurBuilder().build();
+        //LE SERVEUR PREND 9 COMMANDES DE NOURRITURE AVEC UN PRIX DE 3 EUROS CHACUN
+        s.PrendreCommande(new CommandeBuilder().AyantXNourritureAvecXPrix(9,3).build());
+        //LE SERVEUR PREND 9 COMMANDES DE BOISSON AVEC UN PRIX DE 5 EUROS CHACUN
+        s.PrendreCommande(new CommandeBuilder().AyantXNourritureAvecXPrix(9,5).build());
+        //ALORS son chiffre d'affaires est le montant de celle-ci
+        assertEquals(72, s.getChiffreAffaires(),0);
+    }
+
     //ÉTANT DONNÉ un serveur ayant déjà pris une commande
     //QUAND il prend une nouvelle commande
     //ALORS son chiffre d'affaires est la somme des deux commandes
